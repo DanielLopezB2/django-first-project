@@ -1,0 +1,30 @@
+{% extends 'core/base.html' %}
+
+{% block title %} Dashboard {% endblock %}
+
+{% block content %}
+
+    <div class="mt-6 px-6 py-12 bg-gray-100 rounded-xl mt-6 px-6 py-12 rounded-xl bg-gradient-to-tr from-cyan-300 via-cyan-500 to-cyan-400">
+        <h2 class="mb-12 text-3xl text-center font-bold text-white">Mis Items</h2>
+
+        <div class="grid grid-cols-3 gap-6">
+            {% for item in items %}
+                <div class="shadow-xl shadow-inner hover:scale-90 transform transition duration-500 ease-in-out">
+                    <a href="{% url 'item:detail' item.id %}">
+                        <div>
+                            <img src="{{item.image.url}}" class="rounded-t-xl">       
+                        </div>
+
+                        <div class="p-6 rounded-b-xl bg-black">
+                            <h2 class="text-2xl text-white">{{item.name}}</h2>
+                            <p class="text-white">Precio: ${{item.price}}</p>
+                        </div>
+
+                    </a>
+                </div>
+
+            {% endfor %}    
+        </div>
+
+    </div>
+{% endblock %}
